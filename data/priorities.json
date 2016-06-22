@@ -1,5 +1,5 @@
 [
-  { "name": "High", "color": "red", "value": 10 },
-  { "name": "Medium", "color": "yellow", "value": 5 },
-  { "name": "Low", "color": "blue", "value": 1 }
+  { "name": "High", "color": "#FF4136", "value": 10 },
+  { "name": "Medium", "color": "#FFDC00", "value": 5 },
+  { "name": "Low", "color": "#7FDBFF", "value": 1 }
 ]

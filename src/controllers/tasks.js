@@ -1,6 +1,8 @@
 /* eslint-disable new-cap */
 
 import express from 'express';
+import Priority from '../models/priority';
+import Category from '../models/category';
 const router = module.exports = express.Router();
 
 router.get('/', (req, res) => {
@@ -8,7 +10,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-  res.render('tasks/new');
+  const priorities = Priority.find();
+  const categories = Category.find();
+  res.render('tasks/new', { priorities, categories });
 });
 
 router.post('/', (req, res) => {

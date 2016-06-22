@@ -6,10 +6,16 @@ nav.navbar.navbar-default
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/') Template
+      a.navbar-brand(href='/') Todoist
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
       ul.nav.navbar-nav.navbar-right
+        li: a(href='/tasks')
+          i.fa.fa-check-circle.fa-fw
+          span Tasks
+        li: a(href='/tasks/new')
+          i.fa.fa-plus-square.fa-fw
+          span New
         li: a(href='/')
           i.fa.fa-home.fa-fw
           span Home

@@ -29,17 +29,30 @@ router.post('/', (req, res) => {
 });
 
 router.post('/:id/complete', (req, res) => {
-  res.redirect('/tasks');
+  Task.findById(req.params.id, (err, task) => {
+    task.update({ isComplete: !task.isComplete }, () => {
+      res.redirect('/tasks');
+    });
+  });
 });
 
 router.post('/:id/delete', (req, res) => {
-  res.redirect('/tasks');
+  Task.findByIdAndRemove(req.params.id, () => {
+    res.redirect('/tasks');
+  });
 });
 
 router.get('/:id/edit', (req, res) => {
-  res.render('tasks/new');
+  const priorities = Priority.find();
+  const categories = Category.find();
+  Task.findById(req.params.id, (err, task) => {
+    const viewTask = new ViewTask(task, priorities);
+    res.render('tasks/new', { task: viewTask, priorities, categories });
+  });
 });
 
 router.post('/:id', (req, res) => {
-  res.redirect('/tasks');
+  Task.findByIdAndUpdate(req.params.id, req.body, () => {
+    res.redirect('/tasks');
+  });
 });

@@ -5,6 +5,9 @@ block content
   table.table.table-striped
     thead
       tr
+        th
+        th
+        th
         th Name
         th Due
         th Priority
@@ -14,6 +17,17 @@ block content
     tbody
       each task in viewTasks
         tr(style='background-color:' + task.priority.color)
+          td
+            a.btn.btn-success.btn-xs(href='/tasks/' + task.id + '/edit')
+              i.fa.fa-cog.fa-fw
+          td
+            form(action='/tasks/' + task.id + '/complete', method='post')
+              button.btn.btn-primary.btn-xs(type='submit')
+                i.fa.fa-flash.fa-fw
+          td
+            form(action='/tasks/' + task.id + '/delete', method='post')
+              button.btn.btn-danger.btn-xs(type='submit')
+                i.fa.fa-trash.fa-fw
           td= task.name
           td= task.due
           td= task.priority.name
